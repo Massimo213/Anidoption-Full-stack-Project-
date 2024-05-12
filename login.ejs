@@ -1,0 +1,143 @@
+
+<head>
+  <title>Create Account</title>
+  <style>
+   /* CSS for Create Account Page */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: black;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  background-color: #555;
+  color: black;
+}
+
+.content {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+form {
+  max-width: 400px;
+  margin: auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(75, 4, 4);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+
+        
+
+  </style>
+  </style>
+</head>
+<div class="header">
+<h1>AniDoption</h1>
+<div class="DateTimeContainer" id="TimeDate"></div>
+<script>
+    let time = document.getElementById("TimeDate");
+setInterval(() => {
+    let d = new Date();
+    time.innerHTML = d.toLocaleTimeString() + ' ' + d.toLocaleDateString();
+}, 1000);
+</script>
+</div>
+
+<body>
+  <div class="sidenav">
+    <a href="/">Home Page</a>
+    <a href="/CreateAccount">Create an Account</a>
+    <a href="/form">Find a dog/cat</a>
+    <a href="/DogCare">Dog Care</a>
+    <a href="/CatCare">Cat Care</a>
+    <a href="/GiveAway">Have a pet to give away</a>
+    <a href="/ContactUs">Contact Us</a>
+    <a href ="/logout">Log Out</a>
+  </div>
+<div class="content">
+  <form method="post" action="/login">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">Login</button>
+  </form>
+</div>
+
+<footer>
+  <p><a href="/privacy">Privacy/Disclamer Statement</a></p>
+</a>
+</footer>
+
+
+</body>
+

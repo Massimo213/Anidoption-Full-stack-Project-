@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Care</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        .care-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 30px;
+            margin-bottom: 20px;
+            text-decoration: underline;
+        }
+
+
+        p {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgb(75, 4, 4);
+            color: white;
+            padding: 10px;
+        }
+        footer p{
+          color: white;
+          text-align: center;
+          
+        }
+        .header {
+            background-color:black;
+            color: white;
+            padding: 0px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin-top: 0;
+            color :white
+        }
+        .sidenav{
+            height: 100%;
+            width: 130px; 
+            z-index: 1;
+            
+            top: 0; 
+            left: 0;
+            background-color:black; 
+            overflow-x: hidden; 
+            padding-top: 15px;
+            position: fixed;
+        }
+
+        .sidenav a{
+         padding: 22px;
+         display: inline-block;
+        font-size:20px;
+        font-style: italic;
+        color:white;
+        text-decoration:wavy;
+      
+        }
+
+        .sidenav a:hover{
+         color:black;
+         background-color: white;   
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidenav">
+        <a href="/">Home Page</a>
+        <a href="/CreateAccount">Create an Account</a>
+        <a href="/form">Find a dog/cat</a>
+        <a href="/DogCare">Dog Care</a>
+        <a href="/CatCare">Cat Care</a>
+        <a href="/GiveAway">Have a pet to give away</a>
+        <a href="/ContactUs">Contact Us</a>
+        <a href ="/logout">Log Out</a>
+      </div>
+    
+    <div class="header">
+        <h1>AniDoption</h1>
+        <div class="DateTimeContainer" id="TimeDate"></div>
+        <script>
+            let time = document.getElementById("TimeDate");
+        setInterval(() => {
+            let d = new Date();
+            time.innerHTML = d.toLocaleTimeString() + ' ' + d.toLocaleDateString();
+        }, 1000);
+        </script>
+    </div>
+    
+<div class="care-container">
+    <h1>Dog Care Guide</h1>
+
+    <p><strong>1. Feeding:</strong> Provide a balanced and nutritious diet appropriate for your dog's age, size, and health conditions. Consult your veterinarian for specific dietary recommendations.</p>
+
+    <p><strong>2. Exercise:</strong> Ensure regular exercise to keep your dog physically and mentally healthy. Activities like walking, playing fetch, and interactive games are beneficial.</p>
+
+    <p><strong>3. Grooming:</strong> Regular grooming, including brushing, bathing, and nail trimming, is essential to maintain your dog's coat and overall hygiene.</p>
+
+    <p><strong>4. Veterinary Care:</strong> Schedule regular check-ups with a veterinarian. Keep vaccinations, parasite prevention, and dental care up-to-date for your dog's well-being.</p>
+
+    <p><strong>5. Training:</strong> Basic obedience training helps create a strong bond between you and your dog. Positive reinforcement techniques work well in teaching commands and desired behaviors.</p>
+
+    <p><strong>6. Socialization:</strong> Expose your dog to various environments, people, and other animals from an early age to promote positive social behaviors.</p>
+
+    <p><strong>7. Safety:</strong> Create a safe environment at home. Secure your dog with a collar and ID tag. Use a leash during walks and ensure your yard is escape-proof.</p>
+
+    <p><strong>8. Love and Attention:</strong> Dogs thrive on companionship. Spend quality time with your dog, provide affection, and create a loving atmosphere in your home.</p>
+    <p>If you follow these Advices be sure that your dog will be in great shape and health.</p>
+</div>
+<footer>
+ 
+    <p><a href="/privacy">Privacy/Disclamer Statement</a></p>
+  </a>
+</footer>
+</body>
+</html>

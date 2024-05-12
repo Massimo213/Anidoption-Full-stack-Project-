@@ -1,0 +1,251 @@
+
+<head>
+    
+    <title>Give a Pet for Adoption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgb(75, 4, 4);
+            color: white;
+            padding: 0px;
+            
+        }
+        footer p{
+          color: white;
+          text-align: center;
+          text-decoration: wavy;
+
+          
+        }
+        .header {
+            background-color:black;
+            color: white;
+            padding: 0px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin-top: 0;
+        }
+        .sidenav{
+            height: 100%;
+            width: 130px; 
+            z-index: 1;
+            
+            top: 0; 
+            left: 0;
+            background-color:black; 
+            overflow-x: hidden; 
+            padding-top: 15px;
+            position: fixed;
+        }
+
+        .sidenav a{
+         padding: 22px;
+         display: inline-block;
+        font-size:20px;
+        font-style: italic;
+        color:white;
+        text-decoration:wavy;
+      
+        }
+
+        .sidenav a:hover{
+         color:black;
+         background-color: white;   
+        }
+          
+          
+    </style>
+</head>
+<body>
+    <div class="sidenav">
+        <a href="/">Home Page</a>
+        <a href="/CreateAccount">Create an Account</a>
+        <a href="/form">Find a dog/cat</a>
+        <a href="/DogCare">Dog Care</a>
+        <a href="/CatCare">Cat Care</a>
+        <a href="/GiveAway">Have a pet to give away</a>
+        <a href="/ContactUs">Contact Us</a>
+        <a href ="/logout">Log Out</a>
+      </div>
+
+
+    <div class="header">
+        <h1>AniDoption</h1>
+        <div class="DateTimeContainer" id="TimeDate"></div>
+        <script>
+            let time = document.getElementById("TimeDate");
+        setInterval(() => {
+            let d = new Date();
+            time.innerHTML = d.toLocaleTimeString() + ' ' + d.toLocaleDateString();
+        }, 1000);
+        </script>
+    </div>
+    
+    <form id="petAdoptionForm"  name="petAdoptionForm" action="/GiveAway" method="post" onsubmit="return validateTheForm()">
+        <label for="animalType">Cat or Dog:</label>
+        <select id="animalType" name="animalType" required>
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
+        </select>
+        <span id="animalTypeError"></span>
+    
+        <label for="breed">Breed:</label>
+        <input type="text" id="breed" name="breed" placeholder="Enter breed" required>
+        <span id="breedError" class="error-message"></span>
+    
+    
+        <label for="age">Age of Animal:</label>
+        <select id="age" name="age" required>
+            <option value="puppy/kitten">Puppy/Kitten</option>
+            <option value="young">Young</option>
+            <option value="adult">Adult</option>
+            <option value="senior">Senior</option>
+        </select>
+        <span id="ageError" class="error-message"></span>
+    
+        <label for="gender">Animal Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label>
+    
+        <label for="otherDogs">Gets along with other dogs:</label>
+        <input type="checkbox" id="otherDogs" name="otherDogs" value="true">
+    
+        <label for="otherCats">Gets along with other cats:</label>
+        <input type="checkbox" id="otherCats" name="otherCats" value="true">
+    
+        <label for="smallChildren">Suitable for a family with small children:</label>
+        <input type="checkbox" id="smallChildren" name="smallChildren" value="true">
+    
+        <label for="comments">Comments (Brag about the animal):</label>
+        <textarea id="comments" name="comments" rows="4" placeholder="Enter comments"></textarea>
+        <span id="commentError" class="commentError"></span>
+    
+    
+        <label for="ownerName">Current Owner's Name:</label>
+        <input type="text" id="ownerName" name="ownerName" placeholder="Enter owner's name" required>
+        <span id="nameError" class="nameError"></span>
+    
+    
+        <label for="ownerEmail">Current Owner's Email:</label>
+        <input type="email" id="ownerEmail" name="ownerEmail" placeholder="Enter owner's email" required>
+        <span id="emailError" class="emailError"></span>
+    
+        <button type="submit">Submit</button>
+        <button type="reset">Clear</button>
+    </form>
+    <footer>
+        <p><a href="/privacy">Privacy/Disclamer Statement</a></p>
+      </a>
+    </footer>
+    
+
+<script>
+   function validateTheForm() {
+    const typeAnimal = document.getElementById("animalType").value.trim();
+    const breed = document.getElementById("breed").value.trim();
+    const age = document.getElementById("age").value.trim();
+    const comments = document.getElementById("comments").value.trim();
+    const owner = document.getElementById("ownerName").value.trim();
+    const email = document.getElementById("ownerEmail").value.trim();
+
+    // Reset error messages
+    document.getElementById("animalTypeError").textContent = "";
+    document.getElementById("breedError").textContent = "";
+    document.getElementById("ageError").textContent = "";
+    document.getElementById("commentError").textContent = "";
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("emailError").textContent = "";
+
+    // Check if any field is blank
+    var isValid = true;
+    if (typeAnimal === '') {
+        document.getElementById("animalTypeError").textContent = "Please select an animal type.";
+        isValid = false;
+    }
+    if (breed === '') {
+        document.getElementById("breedError").textContent = "Please enter the breed.";
+        isValid = false;
+    }
+    if (age === '') {
+        document.getElementById("ageError").textContent = "Please select the age of the animal.";
+        isValid = false;
+    }
+    if (comments === '') {
+        document.getElementById("commentError").textContent = "Please enter your comments.";
+        isValid = false;
+    }
+    if (owner === '') {
+        document.getElementById("nameError").textContent = "Please enter your name.";
+        isValid = false;
+    }
+    if (email === '') {
+        document.getElementById("emailError").textContent = "Please enter your email address.";
+        isValid = false;
+    }
+    else {
+        // Check if the entered email is valid
+        //we used regular pattern to validate if the user did really entered a valid email.
+        const emailPattern =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById("emailError").textContent = "Please enter a valid email address.";
+            isValid = false;
+            return false;
+        }
+    }
+
+    // Prevent form submission if any field is blank
+    return true;
+}
+
+</script>
+</body>
+

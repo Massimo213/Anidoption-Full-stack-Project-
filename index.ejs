@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+
+    <link rel="stylesheet" href="Q7.css">
+    <title>Home Page of AniDoption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+       .header {
+           
+            background-color:black;
+            color: white;
+            text-align: center;
+            padding: 0px;
+            
+        }
+
+        .logo-container {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 0px;
+            
+        }
+
+        .logo-container img {
+            width: 70px;
+            vertical-align: middle;
+        }
+
+          h1 {
+            color: white;
+            font-style: italic;
+            font-weight: bolder;
+            font-size: 60px;
+            display: inline-block;
+            vertical-align: middle;margin: 0;
+        }
+/* this the css design for the side menu*/
+        .sidenav{
+            height: 100%;
+            width: 130px; 
+            z-index: 1;
+            
+            top: 0; 
+            left: 0;
+            background-color:black; 
+            overflow-x: hidden; 
+            padding-top: 15px;
+            position: fixed;
+        }
+
+        .sidenav a{
+         padding: 22px;
+         display: inline-block;
+        font-size:20px;
+        font-style: italic;
+        color:white;
+        text-decoration:wavy;
+      
+        }
+
+        .sidenav a:hover{
+         color:black;
+         background-color: white;   
+        }
+/*this the css desin for the footer*/
+        .footer{
+
+            position:fixed;
+            bottom:0;
+            left:0;
+            background-color: rgb(75, 4, 4);
+            width:100%;
+            text-align: center;
+            padding: 10px;
+            
+            
+        }
+
+        .footer a{
+            color: white;
+            font-style: italic;
+            font-size: 25px;
+            text-decoration: underline;
+        }
+
+        /* css for the content area*/
+        .content {
+    padding: 0;
+    text-align: center;
+    margin-left: 130px;
+    
+}
+
+.content h1 {
+    /* Additional styles for h1 if needed */
+   margin:0px; 
+   color:rgb(68, 4, 4);
+   font-style: italic;
+   font-size: 40px;
+   text-decoration: underline; /* Remove default margin */
+}
+.content p{
+    text-align: center;
+    padding: 20px;
+    margin:50px;
+    
+    font-size: 18px;
+    border: 4px solid black;
+    border-radius: 0px;
+   
+}
+.content img{
+    margin: 0;
+    
+}
+
+
+    </style>
+</head>
+<!--this the header of my website-->
+<body>
+  
+  <header class="header">
+    <div class="logo-container">
+        <a href="https://www.pinterest.fr/pin/701013498261106565/">
+            <img src="Website_logo.jpeg" alt="Logo" />
+        </a>
+    </div>
+    <h1>Anidoption</h1>
+    <div class="DateTimeContainer" id="TimeDate"></div>
+    <script>
+        let time = document.getElementById("TimeDate");
+        setInterval(() => {
+            let d = new Date();
+            time.innerHTML = d.toLocaleTimeString() + ' ' + d.toLocaleDateString();
+        }, 1000);
+    </script>
+</header>
+
+<!--this is the side menu of my website-->
+<div class="sidenav">
+    <a href="/">Home Page</a>
+    <a href="/CreateAccount">Create an Account</a>
+    <a href="/form">Find a dog/cat</a>
+    <a href="/DogCare">Dog Care</a>
+    <a href="/CatCare">Cat Care</a>
+    <a href="/GiveAway">Have a pet to give away</a>
+    <a href="/ContactUs">Contact Us</a>
+    <a href ="/logout">Log Out</a>
+  </div>
+
+
+<div class="content">
+    <h1 >Home Page </h1>
+    <p>Welcome to Anidoption, a compassionate haven for animal lovers seeking to make a positive impact. Our platform connects caring individuals with adorable pets in need of loving homes. Discover the joy of adoption as you explore heartwarming stories, browse through our furry companions, and embark on a journey of companionship and unconditional love. Anidoption is more than a website; it's a bridge between animals yearning for a family and individuals eager to make a difference. Join us in creating happy tails and lifelong bonds.</p>
+    <img src="pet_photo.jpeg" alt="Pet">
+</div>
+
+
+
+
+
+<!-- this the footer of the website-->
+<div class="footer">
+    <footer>
+    <p><a href="/privacy">Privacy/Disclamer Statement</a></p>
+</footer>
+</div >
+
+</body>
+
+</html>

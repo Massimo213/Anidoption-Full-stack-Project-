@@ -1,0 +1,11 @@
+<div class="header">
+  <h1>AniDoption</h1>
+  <div class="DateTimeContainer" id="TimeDate"></div>
+  <script>
+      let time = document.getElementById("TimeDate");
+  setInterval(() => {
+      let d = new Date();
+      time.innerHTML = d.toLocaleTimeString() + ' ' + d.toLocaleDateString();
+  }, 1000);
+  </script>
+</div>

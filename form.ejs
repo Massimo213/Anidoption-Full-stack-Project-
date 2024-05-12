@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Dog/Cat</title>
+    <style>
+        /* Add some basic styling for better appearance */
+        body {
+            margin-top: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            position :fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgb(75, 4, 4);
+            color: white;
+            padding: 10px;
+            height: auto;
+        }
+        footer p{
+          color: white;
+          text-align: center;
+        }
+
+        .header {
+            background-color:black;
+            color: white;
+            padding: 0px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin-top: 0;
+        }
+        .sidenav{
+            height: 100%;
+            width: 130px; 
+            z-index: 1;
+            
+            top: 0; 
+            left: 0;
+            background-color:black; 
+            overflow-x: hidden; 
+            padding-top: 15px;
+            position: fixed;
+        }
+
+        .sidenav a{
+         padding: 22px;
+         display: inline-block;
+        font-size:20px;
+        font-style: italic;
+        color:white;
+        text-decoration:wavy;
+      
+        }
+
+        .sidenav a:hover{
+         color:black;
+         background-color: white;   
+        }
+          
+           
+    </style>
+</head>
+<body>
+    <div class="sidenav">
+        <a href="/">Home Page</a>
+        <a href="/CreateAccount">Create an Account</a>
+        <a href="/form">Find a dog/cat</a>
+        <a href="/DogCare">Dog Care</a>
+        <a href="/CatCare">Cat Care</a>
+        <a href="/GiveAway">Have a pet to give away</a>
+        <a href="/ContactUs">Contact Us</a>
+        <a href ="/logout">Log Out</a>
+      </div>
+
+    <div class="header">
+        <h1>AniDoption</h1>
+        <div class="DateTimeContainer" id="TimeDate"></div>
+        <script>
+            let time = document.getElementById("TimeDate");
+            setInterval(() => {
+                let d = new Date();
+                time.innerHTML = d.toLocaleTimeString() + ' ' + d.toLocaleDateString();
+            }, 1000);
+        </script>
+    </div>
+    <section>
+    <form id="findform" action="/form" method="post" name="findform" onsubmit="return validateForm()">
+        <label for="animalType">Cat or Dog:</label>
+        <select id="animalType" name="type">
+            <option value="Cat">Cat</option>
+            <option value="Dog">Dog</option>
+        </select>
+
+        <label for="breed">Breed:</label>
+        <input type="text" id="breed" name="breed" placeholder="Enter breed">
+
+        <label for="age">Preferred Age:</label>
+        <select id="age" name="age">
+            <option value="Doesn't matter">Doesn't Matter</option>
+            <option value="puppy/kitten">Puppy/Kitten</option>
+            <option value="adult">Adult</option>
+            <option value="senior">Senior</option>
+        </select>
+
+        <label id="gender">Preferred Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female">
+        <label for="female">Female</label>
+        <input type="radio" id="genderDoesntMatter" name="gender" value="Doesn't matter" checked>
+        <label for="genderDoesntMatter">Doesn't Matter</label>
+<br>
+        <label id="compatibility">Compatibility:</label>
+        <input type="checkbox" id="otherDogs" name="otherdogs" value="yes">
+        <label for="otherDogs">Get along with other dogs</label>
+        <input type="checkbox" id="otherCats" name="othercats" value="yes">
+        <label for="otherCats">Get along with other cats</label>
+        <input type="checkbox" id="smallChildren" name="smallchildren" value="yes">
+        <label for="smallChildren">Get along with small children</label>
+
+        <button type="submit">Submit</button>
+        <button type="reset">Clear</button>
+    </form>
+
+    <h2>Search Results</h2>
+<% if (pets && pets.length > 0) { %>
+    <ul>
+        <% pets.forEach(pet => { %>
+            <li>
+                Type: <%= pet.type %><br>
+                Breed: <%= pet.breed %><br>
+                Age: <%= pet.age %><br>
+                Gender: <%= pet.gender %><br>
+                Gets along with other dogs: <%= pet.getsAlongWithOtherDogs ? 'Yes' : 'No' %><br>
+                Gets along with cats: <%= pet.getsAlongWithCats ? 'Yes' : 'No' %><br>
+                Gets along with children: <%= pet.getsAlongWithChildren ? 'Yes' : 'No' %><br>
+                Description: <%= pet.description %><br>
+                Owner's name: <%= pet.ownerFirstName %> <%= pet.ownerLastName %><br>
+                Owner's email: <%= pet.ownerEmail %>
+            </li>
+        <% }); %>
+    </ul>
+<% } else { %>
+    <p>No matching pets found.</p>
+    
+<% } %>
+
+      
+
+    <footer>
+        <p><a href="/privacy">Privacy/Disclamer Statement</a></p>
+        </a>
+    </footer>
+
+    <script>
+        function validateForm() {
+            // Get form inputs
+            var animalType = document.getElementById('animalType').value.trim();
+            var breed = document.getElementById('breed').value.trim();
+            var age = document.getElementById('age').value.trim();
+
+            // Check if any field is blank
+            if (animalType === '' || breed === '' || age === '') {
+                
+               alert("Please Fill all the Fields")
+                return false; // Prevent form submission
+            }
+
+            // Form is valid
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Ensure the content stretches to at least the full height of the viewport */
+      background-color: #f4f4f4;
+    }
+
+    .header {
+      background-color: black;
+      color: white;
+      padding: 10px 0; /* Add padding top and bottom */
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0;
+    }
+
+    .sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: black;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  background-color: #555;
+  color: black;
+}
+
+    .content {
+      flex-grow: 1; /* Make the content area grow to fill the available space */
+      text-align: center;
+    }
+
+    .content section {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .content section h3 {
+      margin-top: 0;
+    }
+
+    .content section p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .content section a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+
+    .content section a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: rgb(75, 4, 4);
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidenav">
+    <a href="/">Home Page</a>
+    <a href="/CreateAccount">Create an Account</a>
+    <a href="/form">Find a dog/cat</a>
+    <a href="/DogCare">Dog Care</a>
+    <a href="/CatCare">Cat Care</a>
+    <a href="/GiveAway">Have a pet to give away</a>
+    <a href="/ContactUs">Contact Us</a>
+    <a href ="/logout">Log Out</a>
+  </div>
+
+  <div class="header">
+    <h1>AniDoption</h1>
+    <div class="DateTimeContainer" id="TimeDate"></div>
+    <script>
+      let time = document.getElementById("TimeDate");
+      setInterval(() => {
+        let d = new Date();
+        time.innerHTML = d.toLocaleTimeString() + ' ' + d.toLocaleDateString();
+      }, 1000);
+    </script>
+  </div>
+
+  <div class="content">
+    <section>
+      <h3>Logout</h3>
+      <p><%= message %></p>
+      <a href="/">Go to Home</a>
+    </section>
+  </div>
+
+  <footer>
+    <p><a href="/privacy">Privacy/Disclamer Statement</a></p>
+    </a>
+  </footer>
+</body>
+</html>
